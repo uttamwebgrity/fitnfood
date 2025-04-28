@@ -1,0 +1,371 @@
+<?php
+$path_depth="../../";
+
+include_once("../head.htm");
+$link_name = "Welcome";
+
+if(isset($_GET['action']) && $_GET['action']=='delete'){	
+	
+	//************************  check whether category can be deleted not not *****//	
+	$meal_found=$db->num_rows("select id from meals where meal_plan_category_id='".$_REQUEST['id'] ."' limit 1");
+	$meal_plans_found=$db->num_rows("select id from meal_plans where meal_plan_category_id='".$_REQUEST['id'] ."' limit 1");
+	
+	if($meal_found == 0 && $meal_plans_found == 0){
+		$db->query_delete("categories_default_meals","meal_plan_category_id='".$_REQUEST['id'] ."'");
+		$db->query_delete("meal_plan_category","id='".$_REQUEST['id'] ."'");	
+		$_SESSION['msg']="Your selected meal plan category deleted!";
+	}else{
+		$meassage="Your selected meal plan category can not be deleted as ";		
+		$meassage .= $meal_found == 1?' meals and ':'';		
+		$meassage .= $meal_plans_found == 1?' meal plans and ':'';		
+		$meassage = substr($meassage,0, -4);		
+		$meassage .= " are already added under this category!";		
+		$_SESSION['msg']=$meassage;			
+	}
+	//*****************************************************************************//	
+	$general_func->header_redirect($_REQUEST['url']);
+} 
+
+?>
+<script language="JavaScript">
+
+function validate_search(){
+	if(!validate_text(document.frmsearch.cd,1,"Enter meal plan category name")){
+		return false
+	}
+}
+
+function del(id,url,weapon){
+	var a=confirm("Are you sure, you want to delete meal plan category: '" + weapon +"'?")
+    if (a){
+    	location.href="<?=$_SERVER['PHP_SELF']?>?id="+id+"&action=delete&url="+url;
+    }  
+} 
+</script>
+<script src="js/tooltip.js" type="text/javascript"></script>
+<link href="css/tooltip.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+	#vWrapper { }
+    #vWrapper a {color:#EEEEEE; text-decoration:none; display:block; padding:6px 20px; background:#021e2f;}
+    #vWrapper a:hover {color:#FFF; text-decoration:underline; background:#333;}
+                
+    .column { float:left; width: 250px;}
+</style>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" valign="top"><table border="0" align="left" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="6" align="left" valign="top"><img src="images/tab-curve-left.jpg" alt="" width="6" height="29" /></td>
+          <td align="left" valign="middle" class="body_tab-middilebg"> Meal Plan Categories</td>
+          <td width="6" align="right" valign="top"><img src="images/tab-curve-right.jpg" alt="" width="6" height="29" /></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="body_whitebg">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="left" valign="top"><img src="images/spacer.gif" alt="" width="14" height="14" /></td>
+              </tr>
+              <?php if(isset($_SESSION['msg']) && trim($_SESSION['msg']) != NULL){?>
+			<tr>
+                  <td class="message_error"><?=$_SESSION['msg']; $_SESSION['msg']="";?></td>
+            </tr>
+             <tr>
+                  <td  class="body_content-form" height="10"></td>
+            </tr>
+			 <?php  } ?>
+              <tr>
+                <td align="left" valign="top"><table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td align="center" valign="top">
+                       
+                        <table width="543" border="0" align="center" cellpadding="0" cellspacing="0">
+                          <form name="frmsearch"  method="post" action="<?=$_SERVER['PHP_SELF']?>" onsubmit="return validate_search();">
+                           <input type="hidden" name="enter" value="3" />
+                          
+                            <tr>
+                              <td width="115" align="right" valign="middle" class="content_employee" style="padding-right: 5px;">Category Name:</td>
+                              <td width="219" align="left" valign="middle"><input type="text" name="cd"  value="<?=$_REQUEST['cd']?>" autocomplete="OFF" size="35" class="inputbox_employee-listing" /></td>
+                              <td width="209" align="left" valign="middle">
+                              <table border="0" align="left" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td width="5" align="left" valign="top"><img src="images/button-curve-left.png" alt="" width="5" height="22" /></td>
+                              <td align="left" valign="middle" class="body_tab-middilebg"><input name="button" type="submit" class="submit1" value="Search" /></td>
+                              <td width="5" align="right" valign="top"><img src="images/button-curve-right.png" alt="" width="5" height="22" /></td>
+                            </tr>
+                        </table></td>
+                            </tr>
+                          </form>
+                        </table>
+                        <p style="text-align:center;"><font class="text_numbering"><?=$general_func->A_to_Z($_SERVER['PHP_SELF'])?></font></p>
+                       </td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table></td>
+        </tr>
+         <tr>
+          <td align="left" valign="middle" height="10"></td>
+         </tr> 
+            <?php
+				//**************************************************************************************//
+				$url=$_SERVER['PHP_SELF']."?".(isset($_SERVER['QUERY_STRING'])?$_SERVER['QUERY_STRING']:'cc=cc');
+				
+				$recperpage=$general_func->admin_recoed_per_page;
+				
+				
+				$order_by="";
+				$display_oder_type="ASC";
+		
+				if(isset($_REQUEST['display_oder']) && trim($_REQUEST['display_oder']) != NULL){
+					if(trim($_REQUEST['display_oder']) == "name"){//***********name
+						if(trim($_REQUEST['display_oder_type']) == "ASC"){
+							$display_oder_type="DESC";
+							$order_by .="name ASC";
+						}else{
+							$display_oder_type="ASC";
+							$order_by .="name DESC";
+						}
+					}else if(trim($_REQUEST['display_oder']) == "status"){//***********display_order
+						if(trim($_REQUEST['display_oder_type']) == "ASC"){
+							$display_oder_type="DESC";
+							$order_by .="status + 0 ASC";
+						}else{
+							$display_oder_type="ASC";
+							$order_by .="status + 0 DESC";
+						}
+					}else if(trim($_REQUEST['display_oder']) == "display_order"){//***********display_order
+						if(trim($_REQUEST['display_oder_type']) == "ASC"){
+							$display_oder_type="DESC";
+							$order_by .="display_order + 0 ASC";
+						}else{
+							$display_oder_type="ASC";
+							$order_by .="display_order + 0 DESC";
+						}	
+					}else{
+						$order_by .=" display_order + 0 ASC";
+					}
+				}else{
+					$order_by .=" display_order + 0 ASC";
+				}
+
+
+				
+				
+				$query="where 1";
+				
+				
+				if(isset($_REQUEST['key']) && trim($_REQUEST['key']) != NULL)
+					$query .=" and  name LIKE '" .trim($_REQUEST['key']). "%'";
+				else if(isset($_REQUEST['enter']) && (int)$_REQUEST['enter']==3)
+					$query .=" and  name LIKE '" .trim($_REQUEST['cd']). "%'";
+				
+				
+				 $sql="select * from meal_plan_category $query order by $order_by";
+				
+				//-	----------------------------------/Pagination------------------------------
+				if(isset($_GET['in_page'])&& $_GET['in_page']!="")
+					$page=$_GET['in_page'];
+				else
+					$page=1;
+				
+				$total_count=$db->num_rows($sql);
+				$sql=$sql." limit ".(($page-1)*$recperpage).", $recperpage";
+				
+					if($page>1)
+					{
+						$url_prev=stristr($url,"&in_page=".$page)==FALSE?$url."&page=".($page-1):str_replace("&in_page=".$page,"&in_page=".($page-1),$url);
+						$prev="&nbsp;<a href='$url_prev' class='nav'>Prev</a>";
+					}
+					else
+						$prev="&nbsp;Prev";
+						
+					if((($page)*$recperpage)<$total_count)
+					{
+						$url_next=stristr($url,"&in_page=".$page)==FALSE?$url."&in_page=".($page+1):str_replace("&in_page=".$page,"&in_page=".($page+1),$url);
+						$next="&nbsp;<a href='$url_next' class='nav'>Next</a>";
+					}
+					else
+						$next="&nbsp;Next";
+						
+					$page_temp=(($page)*$recperpage);
+					$page_temp=$page_temp<$total_count?$page_temp:$total_count;
+					$showing=" Showing ".(($page-1)*$recperpage+1)." - ".$page_temp." of ".$total_count." | ";
+				 
+				//-----------------------------------/Pagination------------------------------
+				//*************************************************************************************************//
+				$result=$db->fetch_all_array($sql);
+			//*******************************************************************************************************************//
+        ?> 
+        <tr>
+          <td align="left" valign="top"><table width="621" align="center" border="0" 
+cellpadding="5" cellspacing="1">
+              <tr>
+                <td  class="text_numbering">
+                	
+                	<table border="0"  cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td width="5" align="left" valign="top"><img src="images/button-curve-left.png" alt="" width="5" height="22" /></td>
+                              <td align="left" valign="middle" class="body_tab-middilebg"><input name="button" type="button" class="submit1" value="Add New" onclick="location.href='<?=$general_func->admin_url?>settings/meal-plan-category-new.php'" /></td>
+                              <td width="5" align="right" valign="top"><img src="images/button-curve-right.png" alt="" width="5" height="22" /></td>
+                            </tr>
+                   </table>
+                  
+                   </td>
+                <td class="text_numbering" align="right" colspan="3"><?=$total_count?> Categories found.</td>
+              </tr>
+              <tr>
+               
+                <td width="25%" align="left" valign="middle" bgcolor="#35619c" class="table_heading">
+                <a href="settings/category.php?display_oder=name&display_oder_type=<?=$display_oder_type?>" class="header_link">Name</a>
+                
+                </td>
+                 <td width="20%" align="center" valign="middle" bgcolor="#35619c" class="table_heading">Meal Plan Layout</td>
+                <td width="20%" align="center" valign="middle" bgcolor="#35619c" class="table_heading">
+                <a href="settings/category.php?display_oder=display_order&display_oder_type=<?=$display_oder_type?>" class="header_link">Display order</a></td>
+                
+                <td width="20%" align="center" valign="middle" bgcolor="#35619c" class="table_heading">
+                <a href="settings/category.php?display_oder=status&display_oder_type=<?=$display_oder_type?>" class="header_link">Status</a></td>
+                
+                <td width="25%" align="center" valign="middle" bgcolor="#35619c" class="table_heading">Action</td>
+              </tr>
+			
+			<?php if(count($result) == 0){?>
+                	<tr>
+                		<td colspan="4" align="center" bgcolor="#f5f7fa" valign="middle" height="50" class="message_error">Sorry, no categories added yet!</td>
+              		</tr>
+				<?php }else{
+					for($j=0;$j<count($result);$j++){?>
+                     <tr bgcolor="<?=$j%2==0?$general_func->color2:$general_func->color1;?>">
+                        <td  align="left" valign="middle" class="table_content-blue"><?=$result[$j]['name']?></td>
+                        <td align="center" valign="middle" class="table_content-blue">                        	
+                        	<div id="vWrapper">          
+						    	<img src="images/view-details.png" style="cursor: pointer;" onmouseover="tooltip.pop(this, '#sub<?=$j?>', {position:1, offsetX:-20, effect:'slide', sticky: true})" \>
+						   </div>
+						    <!--Menu Data-->
+						    <div style="display:none;">	
+						    					    						
+						        <div id="sub<?=$j?>">
+						        	<?php						        	
+						        	$sql_meals="select which_day,meal_time,carbs_veggies,with_or_without_sauce,m.name from meal_plan_layout d left join meal_category m on d.meal_category_id=m.id where d.meal_plan_category_id='" . intval($result[$j]['id']) . "' order by which_day,meal_time ASC";
+									$result_default_meals=$db->fetch_all_array($sql_meals);
+									$total_default_meals=count($result_default_meals);
+									
+									$default_meals=array();
+									
+									for($i=0; $i < $total_default_meals; $i++ ){
+										$default_meals[$result_default_meals[$i]['which_day']][$result_default_meals[$i]['meal_time']]['meal_category']=$result_default_meals[$i]['name'];
+										$default_meals[$result_default_meals[$i]['which_day']][$result_default_meals[$i]['meal_time']]['carbs_veggies']=$result_default_meals[$i]['carbs_veggies'];
+										$default_meals[$result_default_meals[$i]['which_day']][$result_default_meals[$i]['meal_time']]['with_or_without_sauce']=$result_default_meals[$i]['with_or_without_sauce'];
+									} 
+						        	
+						        	?>						        	
+						            <div class="column" style="line-height: 20px;">						            	
+						     		<?php
+						            	for($day=1; $day <=7; $day++){
+						                	echo "<strong> * Day  " . $day . " *</strong> <br/>";
+											for($time=1; $time <= intval($result[$j]['meals_per_day']); $time++ ){
+												echo "<strong>Meal " . $time .":</strong><br/> " . $default_meals[$day][$time]['meal_category'];
+												echo " - ";
+												if(intval($default_meals[$day][$time]['carbs_veggies'])==1)
+													echo "Carbs, ";
+												else if(intval($default_meals[$day][$time]['carbs_veggies'])==2)
+													echo "Veggies, ";
+												else
+													echo "Carbs and Veggies, ";												
+												
+												if(intval($default_meals[$day][$time]['with_or_without_sauce'])==1)
+													echo "With Sauce";								
+												else
+													echo "Without Sauce";
+												
+												echo "<br/>";
+											}
+						                }							                
+						                ?>
+						            </div>
+						            <!--<div class="column" style="line-height: 20px;">
+						            <?php						            
+						           /*
+									$snacks_incl=$result[$j]['snacks_incl'];									
+									$snacks_type_array=array();									
+									if($snacks_incl == 2){
+										$snacks_type_array = explode(",", $result[$j]['snacks_type']);	
+									} 
+									echo "<strong>Snacks incl:</strong> <br/>";
+									
+						            if(intval($snacks_incl)==1)
+										echo "No Snack - F1";								
+									else{										
+										if(in_array("1",$snacks_type_array))
+											echo "Fat Loss Shake - F2 <br/>";
+										if(in_array("2",$snacks_type_array))
+											echo "Muscle Shake - F3 <br/>";
+										if(in_array("3",$snacks_type_array))
+											echo "Green Tea Coffee - F4 <br/>";
+										if(in_array("4",$snacks_type_array))
+											echo "Multivitamins - F5 <br/>";
+									}									
+									echo "<br/>"; */
+						            ?>						           
+						            </div> -->
+						        </div>						        
+						    </div> 
+                        </td>
+                        <td  align="center" valign="middle" class="table_content-blue"><?=$result[$j]['display_order']?></td>
+                        <td  align="center" valign="middle" class="table_content-blue"><?=$result[$j]['status']==1?'Active':'Inactive';?></td>
+                       <td  align="left" valign="middle" class="table_content-blue" style="padding-left: 15px;">                     
+                       <img src="images/edit.png" onclick="location.href='<?=$general_func->admin_url?>settings/meal-plan-category-new.php?id=<?=$result[$j]['id']?>&action=EDIT&return_url=<?=urlencode($url)?>'" style="cursor:pointer;" />
+                      &nbsp;&nbsp;&nbsp;&nbsp; 
+                      <?php if($result[$j]['id'] != 1 && $result[$j]['id'] != 2 && $result[$j]['id'] != 3 ) {?>
+                        <img src="images/delete.png" onclick="del('<?=$result[$j]['id']?>','<?=urlencode($url)?>','<?=$result[$j]['name']?>')" style="cursor:pointer;" />         
+                        <?php } ?>
+                        </td>
+            </tr>
+			<?php }
+				}
+	  		?>
+            <tr>
+                <td colspan="4" align="center" valign="middle" height="4"></td>
+            </tr> 
+              <tr>
+                <td colspan="4" align="center" valign="middle" height="30" class="table_content-blue"></td>
+              </tr>
+          </table></td>
+        </tr>
+                    <tr>
+                <td colspan="4" align="center" valign="middle" height="30" class="table_content-blue">
+                  <?php 
+		if ($total_count>$recperpage) {
+		?>
+		<table width="715" height="20" border="0"  cellpadding="0" cellspacing="0">
+<tr>
+				<td width="295" align="left" valign="bottom" class="htext">
+						&nbsp;Jump to page 
+				<select name="in_page" style="width:45px;" onChange="javascript:location.href='<?php echo str_replace("&in_page=".$page,"",$url);?>&in_page='+this.value;">
+				  <?php for($m=1; $m<=ceil($total_count/$recperpage); $m++) {?>
+				  <option value="<?php echo $m;?>" <?php echo $page==$m?'selected':''; ?>><?php echo $m;?></option>
+				  <?php }?>
+				</select>
+				of 
+		  <?php echo ceil($total_count/$recperpage); ?>	  </td>
+		  <td width="420" align="right" valign="bottom" class="htext"><?php echo " ".$showing." ".$prev." ".$next." &nbsp;";?></td>
+		  </tr>
+	  </table>
+
+    <!-- / show category -->
+		<?php  }?>                </td>
+              </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+<?php
+include("../foot.htm");
+?>

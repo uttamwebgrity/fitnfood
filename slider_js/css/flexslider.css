@@ -1,0 +1,140 @@
+.flexslider .slides > li {
+	display: none;
+	position:relative
+} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flex-pauseplay span {
+	text-transform: capitalize;
+}
+/* Clearfix for the .slides element */
+  .slides:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+html[xmlns] .slides {
+	display: block;
+}
+* html .slides {
+	height: 1%;
+}
+.flexslider {
+	position:relative;
+	margin-bottom:0;
+	z-index:10;
+	height:auto;
+	width:100%;
+	float:left;
+}
+.flex-caption {
+	z-index:100;
+	position:absolute;
+	left:0;
+	top:0;
+	padding:40px 0 0 80px;
+	font-family: 'Open Sans', sans-serif;
+	text-transform:uppercase;
+	width:630px;
+}
+.flex-caption span {
+	display:block;
+	color:#6b6b6b;
+	font-size:61px;
+	line-height:64px;
+	letter-spacing:-2px
+}
+.flex-caption strong {
+	display:block;
+	color:#049bdd;
+	font-size:70px;
+	line-height:74px;
+	letter-spacing:-3px;
+	margin-top:-11px
+}
+.flexslider li.last .flex-caption em {
+	padding-left:0
+}
+.flex-caption em {
+	font-style:normal;
+	display:block;
+	color:#049bdd;
+	font-size:70px;
+	line-height:74px;
+	letter-spacing:-3px;
+	margin-top:-13px;
+	padding-bottom:12px;
+	padding-left:108px
+}
+.flex-caption p {
+	font-size:17px;
+	line-height:23px;
+	color:#818c91;
+	text-transform:none;
+	padding-bottom:25px;
+	padding-right:160px
+}
+.flexslider .slides {
+	list-style: none outside none;
+	margin:0;
+}
+/* Control Nav */
+
+.flex-control-nav {
+	display:block;
+	position:absolute;
+	z-index:9999;
+	left:50%;
+	/*width:152px; */
+	margin-left:-92px;
+	bottom: 25px;
+	
+}
+.flex-control-nav li {
+	float:left;
+	margin:5px;
+	list-style:none;
+}
+.flex-control-nav li a {
+	width:16px;
+	height:16px;
+	display:block;
+	text-indent:-9999px;
+	background:none;
+	border:2px solid #3e3e3d;
+	border-radius:10px;
+	cursor:pointer;
+}
+.flex-control-nav li a.flex-active{ background:#95d641; }
+
+
+.flex-direction-nav {
+	position:absolute;
+	z-index:100;
+	right:0;
+	bottom:0;
+	display:none;
+}
+.flex-direction-nav li {
+	float:left;
+	list-style:none;
+}
+.flex-direction-nav li a {
+	background:#06F;
+	display:block;
+	cursor:pointer;
+	width:38px;
+	height:38px;
+	display:block
+}
+.flex-direction-nav li a.flex-next {
+	background:#06F;
+	margin-left:8px
+}
+.flex-direction-nav li a.flex-prev {
+	background:#06F;
+}
+.flex-direction-nav li a:hover {
+	background-position:0 bottom
+}

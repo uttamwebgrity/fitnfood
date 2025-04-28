@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ padding:0; margin:0; outline:none; border:none; text-decoration:none; list-style:none; }
+
+@font-face {
+    font-family: 'open_sanslight';
+    src: url('../fonts/opensans-light-webfont.eot');
+    src: url('../fonts/opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-light-webfont.woff') format('woff'),
+         url('../fonts/opensans-light-webfont.ttf') format('truetype'),
+         url('../fonts/opensans-light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('../fonts/opensans-regular-webfont.eot');
+    src: url('../fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-regular-webfont.woff') format('woff'),
+         url('../fonts/opensans-regular-webfont.ttf') format('truetype'),
+         url('../fonts/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+body.lginPg{ background:url(../images/lginBg.jpg) repeat 0 0 #fff; font:normal 12px/18px Arial, Helvetica, sans-serif; color:#666; }
+
+.lginMain{ width:400px; height:480px; margin:-240px 0 0 -200px; background:#fff; position:absolute; left:50%; top:50%; box-shadow:#666 0 0 5px; }
+.lgBxRw{ float:left; width:100%; }
+.lginMain img.btmSqrImg{ position:absolute; bottom:0; left:0; width:100%; height:auto; }
+
+img.lginLogo{ margin:25px auto 0; display:block; border:none; }
+p.lginError{ text-align:center; font:14px/18px 'open_sanslight'; color:#d10202; padding:15px 0 0; min-height:10px; }
+
+.lgnFldPnl{ margin:0 auto; width:313px; }
+
+.lgnFldPnl input[type="text"]{ float:left; margin:20px 0 0; width:257px; height:31px; border:1px solid #ddd; border-radius:3px; padding:4px 4px 4px 50px; color:#717172; font:15px/31px 'open_sansregular'; background:url(../images/lgnPgIco1.png) no-repeat left center; }
+.lgnFldPnl input[type="password"]{ float:left; margin:20px 0 0; width:257px; height:31px; border:1px solid #ddd; border-radius:3px; padding:4px 4px 4px 50px; color:#717172; font:15px/31px 'open_sansregular'; background:url(../images/lgnPgIco2.png) no-repeat left center; }
+.lgnFldPnl input[type="email"]{ float:left; margin:20px 0 0; width:257px; height:31px; border:1px solid #ddd; border-radius:3px; padding:4px 4px 4px 50px; color:#717172; font:15px/31px 'open_sansregular'; background:url(../images/lgnPgIco3.png) no-repeat left center; }
+
+.lgnSbmtPnl{ padding:20px 0; float:left; width:100%; }
+.lgnSbmtPnl input[type="submit"]{ float:right; background:#479d23; width:97px; height:40px; border-radius:3px; border:none; cursor:pointer; font:18px 'open_sansregular'; color:#fff; }
+.lgnSbmtPnl input[type="checkbox"]{ float:left; margin:12px 8px 0 0; }
+.lgnSbmtPnl span{ color:#717173; font:normal 11px/40px Arial, Helvetica, sans-serif; float:left; }
+
+.lgnPgLnk{ padding:10px 0 0; float:left; width:100%; font:normal 11px/16px Arial, Helvetica, sans-serif; color:#b2b2b2; border-top:1px solid #e5e5e5; }
+.lgnPgLnk a{ color:#b2b2b2; text-decoration:none; }
+.lgnPgLnk a:hover{ color:#666; text-decoration:none; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

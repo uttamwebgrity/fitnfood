@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Payment Information :: Fit N Food</title>
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/fonts.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+	<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js" type="text/javascript"></script>
+	<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/ie7-squish.js" type="text/javascript"></script>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+	<![endif]-->
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+		$(document).ready(function() {
+			$(".topNav img.mnuIcon").click(function() {
+				$(".topNav ul").slideToggle(500);
+			})
+		})
+
+
+	</script>
+    <script type="text/javascript">
+		$(document).ready(function() {
+			$(".custom-select").each(function() {
+				$(this).wrap("<span class='select-wrapper'></span>");
+				$(this).after("<span class='holder'></span>");
+			});
+			$(".custom-select").change(function() {
+				var selectedOption = $(this).find(":selected").text();
+				$(this).next(".holder").text(selectedOption);
+			}).trigger('change');
+		})
+
+	</script>
+
+    <!-- Home Page Slider -->
+    <link href="slider_js/css/flexslider.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="slider_js/js/jquery.js"></script>
+    <script type="text/javascript" src="slider_js/js/jquery.flexslider.js"></script>
+    <script type="text/javascript">
+		$(window).load(function() {
+			if(($.browser.msie) && ($.browser.version < '9.0')) {
+
+				jQuery('.flexslider').flexslider({
+					animation : "fade",
+					slideshow : true,
+					slideshowSpeed : 7000,
+					animationDuration : 600,
+					prevText : "",
+					nextText : "",
+					controlNav : true
+				})
+
+			} else {
+
+				jQuery('.flexslider').flexslider({
+					animation : "fade",
+					slideshow : true,
+					slideshowSpeed : 7000,
+					animationDuration : 600,
+					prevText : "",
+					nextText : "",
+					controlNav : true
+				})
+
+			}
+
+		});
+
+	</script>
+    <!-- Home Page Slider -->
+
+    <!-- Tabcontent -->
+    <link rel="stylesheet" type="text/css" href="tabcontent_js/tabcontent.css" />
+    <script type="text/javascript" src="tabcontent_js/tabcontent.js"></script>
+    <!-- Tabcontent -->
+    </head>
+
+    <body>
+<div class="headerPnl2">
+      <div class="mainDiv"> <a href="index.html"><img src="images/logo.png" alt="" class="logo" /></a>
+    <div class="topNav"> <img src="images/ddMnuIco.png" class="mnuIcon" alt="" />
+          <ul>
+        <li> <a href="#url" class="active">Home</a> </li>
+        <li> <a href="#url">How it Works</a> </li>
+        <li> <a href="#url">Get Started</a> </li>
+        <li> <a href="#url">SignUp / Login</a> </li>
+      </ul>
+        </div>
+    <div class="ordNwBtn"> <a href="#url">Order <br />
+      Now</a> </div>
+  </div>
+    </div>
+<div class="inrBnr"> <img src="images/inrBnr.jpg" class="inrBnr" alt="" />
+      <div class="sldrSdwo"> &nbsp; </div>
+    </div>
+<div class="paymtInfo">
+      <div class="mainDiv2">
+    <h1>Payment Information</h1>
+    <div class="paymtInfoOne">
+          <h2>Your Personal Information</h2>
+          <ul class="paymtInfoLst">
+        <li><strong>Name :</strong> <span>Jhon Deo</span></li>
+        <li><strong>Email :</strong> <span>example@example.com</span></li>
+        <li><strong>Address : </strong> <span>2 Holt Street, Surry Hills, NSW 2010 Australia</span></li>
+      </ul>
+          <!--<div class="colOne"></div>--> 
+          <br class="clear">
+          <h2>Payment Method</h2>
+          <p style="padding-top:0">
+        <input type="radio" id="r1" name="rr" />
+        <label for="r1"><span></span>Credit Card</label>
+        <input type="radio" id="r1" name="rr" />
+        <input type="radio" id="r2" name="rr" />
+        <label for="r2"><span></span>Bank Account</label>
+      </p>
+        </div>
+    <div class="paymtInfoTwo">
+          <h2>Your Personal Information</h2>
+          <p><strong>Program Length</strong><br>
+        12 Week Transformation</p>
+          <p><strong>Meal Plan Price</strong><br>
+        <span class="old_price">$ 256.00</span> &nbsp;  &nbsp;<span class="present_price">$ 245.00</span> per week</p>
+          <p><strong>Delivery Charges</strong><br>
+        <span class="green">$</span></strong><span class="present_price">10.00</span> per week</p>
+          <p><strong>Total Price</strong><br>
+        <span class="green">$</span></strong><span class="present_price">255.00</span> per week</p>
+        </div>
+    <br class="clear">
+    <div style="float:left" class="dayPnlBtn">
+          <input type="submit" value="Payment Info" name="">
+        </div>
+    <div style="float:right" class="dayPnlBtn">
+          <input type="submit" value="Continue" name="">
+        </div>
+  </div>
+    </div>
+<div class="footerTop">
+      <div class="mainDiv2">
+    <ul>
+          <li> <a href="#url">Home</a> </li>
+          <li> <a href="#url">How It Works </a> </li>
+          <li> <a href="#url">Get Started </a> </li>
+          <li> <a href="#url">Login/Signup</a> </li>
+        </ul>
+    <div class="footerTopRt">
+          <p> T +61 1300 362 925 <br>
+        <a href="mailto:enquiry@fitnfood.com.au">enquiry@fitnfood.com.au</a> <br>
+        f11/101 Rookwood Rd <br>
+        Yagoona NSW 2199, Australia </p>
+          <div class="solMda"> <a href="#url"><img src="images/solIco1.png" alt="" /></a> <a href="#url"><img src="images/solIco2.png" alt="" /></a> <a href="#url"><img src="images/solIco3.png" alt="" /></a> <a href="#url"><img src="images/solIco4.png" alt="" /></a> </div>
+        </div>
+  </div>
+    </div>
+<div class="footerBot"> &copy; Copyright 2014 Fit 'N' Food. All rights reserved. </div>
+</body>
+</html>

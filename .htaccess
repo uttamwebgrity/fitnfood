@@ -1,0 +1,40 @@
+RewriteEngine On
+
+#Options -Indexes
+#Options -Multiviews
+
+ErrorDocument 404     /page-not-found.php
+
+RewriteRule ^articles/page/(.*)$ articles.php?in_page=$1
+RewriteRule ^testimonials/page/(.*)$ testimonials.php?in_page=$1
+RewriteRule ^training-videos/page/(.*)$ training-videos.php?in_page=$1
+RewriteRule ^order-details/(.*)$ order-details.php?order_id=$1
+
+RewriteRule ^modify-select-meal-plan/(.*)$ modify-select-meal-plan.php?order_id=$1
+
+
+RewriteRule ^modify-questionnaire-meal-plan/update/(.*)/(.*)$ modify-questionnaire-meal-plan.php?order_id=$1&price=$2&action=update_me
+
+RewriteRule ^modify-questionnaire-meal-plan/(.*)$ modify-questionnaire-meal-plan.php?order_id=$1
+
+
+
+RewriteRule ^modify-customize-meal-plan/(.*)$ modify-customize-meal-plan.php?order_id=$1
+
+
+
+RewriteRule ^meal-plan/(.*)/(.*)/$ select-your-meal-plan.php?enter=choose_your_meal_plan&frm_choose_your_meal_plan=yes&meal_plan_category_id=$2&category_meal_plan=$1
+
+
+
+#Training Module
+
+
+RewriteRule ^fitness-center-register/(.*)$ fitness-center-register.php?location_id=$1
+
+
+
+
+RewriteRule ^(.*)/$  $1.php 
+
+

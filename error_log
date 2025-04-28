@@ -1,0 +1,30 @@
+[28-Nov-2014 09:33:50 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/fitnfoodc/public_html/suburb-filter.php:1) in /home/fitnfoodc/public_html/includes/configuration.php on line 3
+[28-Nov-2014 09:36:37 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/fitnfoodc/public_html/suburb-filter.php:1) in /home/fitnfoodc/public_html/includes/configuration.php on line 3
+[28-Nov-2014 09:38:27 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/fitnfoodc/public_html/suburb-filter.php:1) in /home/fitnfoodc/public_html/includes/configuration.php on line 3
+[28-Nov-2014 09:38:31 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/fitnfoodc/public_html/suburb-filter.php:1) in /home/fitnfoodc/public_html/includes/configuration.php on line 3
+[28-Nov-2014 09:38:33 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/fitnfoodc/public_html/suburb-filter.php:1) in /home/fitnfoodc/public_html/includes/configuration.php on line 3
+[28-Nov-2014 09:38:35 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/fitnfoodc/public_html/suburb-filter.php:1) in /home/fitnfoodc/public_html/includes/configuration.php on line 3
+[28-Nov-2014 09:38:36 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/fitnfoodc/public_html/suburb-filter.php:1) in /home/fitnfoodc/public_html/includes/configuration.php on line 3
+[28-Nov-2014 09:38:39 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/fitnfoodc/public_html/suburb-filter.php:1) in /home/fitnfoodc/public_html/includes/configuration.php on line 3
+[28-Nov-2014 09:38:42 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/fitnfoodc/public_html/suburb-filter.php:1) in /home/fitnfoodc/public_html/includes/configuration.php on line 3
+[28-Nov-2014 09:39:02 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/fitnfoodc/public_html/suburb-filter.php:1) in /home/fitnfoodc/public_html/includes/configuration.php on line 3
+[28-Nov-2014 09:39:03 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/fitnfoodc/public_html/suburb-filter.php:1) in /home/fitnfoodc/public_html/includes/configuration.php on line 3
+[31-Dec-2014 16:31:50 Australia/Sydney] CSRF state token does not match one provided.
+[27-Jan-2015 11:54:58 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 11:54:59 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 11:55:34 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 11:55:37 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 11:55:37 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 11:55:59 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 11:56:20 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 11:56:21 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 12:20:05 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 12:20:05 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 12:27:32 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 12:27:41 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 12:27:42 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 12:27:44 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 12:27:44 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 12:27:52 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 12:27:53 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
+[27-Jan-2015 12:28:42 UTC] PHP Warning:  imagettftext(): Could not find/open font in /home/fitnfoodc/public_html/captchaImage.php on line 116
